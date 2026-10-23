@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f3ec" />
+    <meta
+      name="description"
+      content="Understand the energy behind compute. Explore data-centre power, compare energy costs, and size cooling-loop flow with transparent, shareable calculations."
+    />
+    <meta
+      property="og:title"
+      content="FATHOM — Understand the energy behind compute"
+    />
+    <meta
+      property="og:description"
+      content="A clear-eyed workbench for data-centre power, cost and cooling. Free to use, entirely in your browser."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://paulchum.github.io/fathom/" />
+    <meta
+      property="og:image"
+      content="https://paulchum.github.io/fathom/assets/social.png"
+    />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="640" />
+    <meta
+      property="og:image:alt"
+      content="FATHOM's cream and forest-green workbench, with an illustrated server and cooling loop."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>FATHOM — Power. Cooling. Perspective.</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./src/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#workbench">Skip to calculator</a>
+    <header class="site-header wrap">
+      <a class="wordmark" href="./" aria-label="FATHOM home"
+        ><svg viewBox="0 0 30 30" aria-hidden="true">
+          <path d="M3 5h24M3 14h17M3 23h10M4 4v23" />
+          <circle cx="25" cy="23" r="3" /></svg
+        >fathom<span class="wordmark-dot">.</span></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="#workbench">Workbench</a><a href="#field-notes">Field notes</a
+        ><a href="#methodology">Methodology</a>
+      </nav>
+      <a
+        class="github-link"
+        href="https://github.com/paulchum/fathom"
+        target="_blank"
+        rel="noopener"
+        >View source <span aria-hidden="true">↗</span></a
+      >
+    </header>
+    <main>
+      <section class="hero wrap" aria-labelledby="hero-heading">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="status-dot"></span> A WORKBENCH FOR COMPUTE
+            INFRASTRUCTURE
+          </div>
+          <h1 id="hero-heading">
+            Big compute.<br /><em>Clearer thinking.</em>
+          </h1>
+          <p class="hero-description">
+            Explore the power, cost and cooling behind a data centre. Change an
+            assumption. See what it changes.
+          </p>
+          <a class="button dark" href="#workbench"
+            >Explore the workbench <span aria-hidden="true">↗</span></a
+          >
+          <div class="hero-footnote">
+            <span aria-hidden="true">⌁</span> Transparent equations. All in your
+            browser.
+          </div>
+        </div>
+        <div
+          class="hero-visual"
+          aria-label="Illustrated flow of energy from a power supply through server racks and a cooling loop"
+        >
+          <div class="diagram-topline">
+            <span>THE ENERGY OF COMPUTE</span><span>FIG. 01</span>
+          </div>
+          <svg
+            class="infrastructure"
+            viewBox="0 0 560 350"
+            role="img"
+            aria-labelledby="diagram-title"
+          >
+            <title id="diagram-title">
+              Power enters the server racks; a cooling loop carries away heat.
+            </title>
+            <defs>
+              <pattern
+                id="grid"
+                width="24"
+                height="24"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M24 0H0V24"
+                  fill="none"
+                  stroke="#dcded3"
+                  stroke-width="0.6"
+                />
+              </pattern>
+              <linearGradient id="rack-front" x1="0" y1="0" x2="1" y2="1">
+                <stop stop-color="#50665b" />
+                <stop offset="1" stop-color="#283f35" />
+              </linearGradient>
+              <linearGradient id="plate" x1="0" y1="0" x2="1" y2="1">
+                <stop stop-color="#f6f5ef" />
+                <stop offset="1" stop-color="#dedfd3" />
+              </linearGradient>
+              <g id="server">
+                <path d="M0 0 42-24 42 115 0 139Z" fill="#243e32" />
+                <path d="M0 0-42-24-42 115 0 139Z" fill="url(#rack-front)" />
+                <path d="M-42-24 0-48 42-24 0 0Z" fill="#7f9382" />
+                <path
+                  d="M-34-12-8 3M-34 8-8 23M-34 28-8 43M-34 48-8 63M-34 68-8 83M-34 88-8 103"
+                  stroke="#93a78f"
+                  stroke-width="3"
+                />
+                <path
+                  d="M9 5 33-9M9 25 33 11M9 45 33 31M9 65 33 51M9 85 33 71M9 105 33 91"
+                  stroke="#172f26"
+                  stroke-width="4"
+                />
+                <g fill="#d0e59b">
+                  <circle cx="-33" cy="-5" r="1.5" />
+                  <circle cx="-33" cy="35" r="1.5" />
+                  <circle cx="-33" cy="75" r="1.5" />
+                </g>
+              </g>
+            </defs>
+            <rect width="560" height="350" fill="url(#grid)" />
+            <ellipse
+              cx="292"
+              cy="256"
+              rx="177"
+              ry="54"
+              fill="#cbd0bf"
+              opacity=".2"
+            />
+            <path d="m106 211 207-111 169 96-205 117Z" fill="#c9cebe" />
+            <path
+              d="m106 203 207-111 169 96-205 117Z"
+              fill="url(#plate)"
+              stroke="#c2c8b8"
+            />
+            <path
+              class="energy-line"
+              d="M15 201 102 201 166 164"
+              fill="none"
+              stroke="#cd6747"
+              stroke-width="3"
+            />
+            <path
+              d="m135 194 76 44 199-111"
+              fill="none"
+              stroke="#3d7567"
+              stroke-width="5"
+            />
+            <path
+              d="m170 264 99 58 220-125-44-26"
+              fill="none"
+              stroke="#809a83"
+              stroke-width="3"
+            />
+            <use href="#server" x="311" y="112" />
+            <use href="#server" x="249" y="148" />
+            <use href="#server" x="187" y="184" />
+            <path
+              d="m402 203 50-28 42 24-49 29Z"
+              fill="#e7eadf"
+              stroke="#a2af9b"
+            />
+            <path d="m402 203 43 25v36l-43-25Z" fill="#bdcbb7" />
+            <path d="m445 228 49-29v36l-49 29Z" fill="#92ab95" />
+            <path
+              d="m414 211 21 12m-21-4 21 12m-21-4 21 12"
+              stroke="#6b8972"
+              stroke-width="2"
+            />
+            <path d="M380 75h89v26" fill="none" stroke="#9da99a" />
+            <circle cx="380" cy="75" r="3" fill="#49674e" />
+            <text x="461" y="118" text-anchor="end" class="diagram-label">
+              IT EQUIPMENT
+            </text>
+            <text x="14" y="179" class="diagram-label">POWER IN</text>
+            <text x="394" y="301" class="diagram-label">HEAT OUT</text>
+            <circle class="energy-dot" cx="61" cy="201" r="5" fill="#cd6747" />
+            <circle cx="269" cy="322" r="4" fill="#547b64" />
+          </svg>
+          <div class="diagram-caption">
+            <span
+              >Energy becomes computation.<br />And almost all of it becomes
+              heat.</span
+            ><span class="diagram-coordinates">POWER / IT / THERMAL</span>
+          </div>
+        </div>
+      </section>
+      <div class="principles wrap">
+        <span><b>01</b> Change the assumptions</span
+        ><span><b>02</b> Follow the energy</span
+        ><span><b>03</b> Compare the tradeoffs</span
+        ><span class="principles-end">NO SIGNUP. JUST PERSPECTIVE.</span>
+      </div>
+
+      <section
+        class="workbench wrap"
+        id="workbench"
+        aria-labelledby="workbench-title"
+      >
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">01 / EXPLORE</span>
+            <h2 id="workbench-title">Your next <em>what if.</em></h2>
+          </div>
+          <p>A few inputs. A more useful conversation.</p>
+        </div>
+        <div class="workbench-toolbar">
+          <div class="tabs" role="tablist" aria-label="Calculator">
+            <button
+              id="tab-power"
+              class="tab active"
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-power"
+              data-tab="power"
+            >
+              <span aria-hidden="true">↯</span> Power &amp; cost</button
+            ><button
+              id="tab-cooling"
+              class="tab"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-cooling"
+              tabindex="-1"
+              data-tab="cooling"
+            >
+              <span aria-hidden="true">◌</span> Cooling loop
+            </button>
+          </div>
+          <button class="text-button" id="reset">
+            Reset inputs <span aria-hidden="true">↺</span>
+          </button>
+        </div>
+        <div class="calculator-shell">
+          <div class="inputs-column">
+            <div id="panel-power" role="tabpanel" aria-labelledby="tab-power">
+              <div class="panel-heading">
+                <h3>Set the scene</h3>
+                <span>ENERGY MODEL</span>
+              </div>
+              <p class="muted small">
+                Use average IT power over your operating hours.
+              </p>
+              <div class="preset-row" aria-label="IT load presets">
+                <button data-preset="0.25">Edge <span>0.25 MW</span></button
+                ><button class="active" data-preset="8">
+                  Cluster <span>8 MW</span></button
+                ><button data-preset="40">Campus <span>40 MW</span></button>
+              </div>
+              <div id="power-fields"></div>
+              <div class="currency-row">
+                <label for="currency">Currency</label
+                ><select id="currency">
+                  <option>USD</option>
+                  <option>CAD</option>
+                  <option>EUR</option>
+                  <option>GBP</option></select
+                ><span>Label only; no conversion.</span>
+              </div>
+              <div class="input-footnote">
+                <span aria-hidden="true">↳</span
+                ><span
+                  >Energy-only estimate. Demand charges, taxes and capital costs
+                  are outside this model.</span
+                >
+              </div>
+            </div>
+            <div
+              id="panel-cooling"
+              role="tabpanel"
+              aria-labelledby="tab-cooling"
+              hidden
+            >
+              <div class="panel-heading">
+                <h3>Follow the heat</h3>
+                <span>LIQUID LOOP</span>
+              </div>
+              <p class="muted small">
+                Estimate flow through a single-phase cooling loop.
+              </p>
+              <div id="cooling-fields"></div>
+              <details class="advanced">
+                <summary>
+                  Fluid &amp; pump assumptions <span aria-hidden="true">+</span>
+                </summary>
+                <div id="advanced-fields"></div>
+                <p class="small muted">
+                  Defaults approximate liquid water. Enter properties for your
+                  fluid and operating point.
+                </p>
+              </details>
+              <div class="input-footnote">
+                <span aria-hidden="true">↳</span
+                ><span
+                  >Recirculating flow is not water consumption. Only the
+                  selected IT heat is included.</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            class="results-column"
+            aria-label="Calculation results"
+            data-invalid="false"
+          >
+            <div class="result-heading">
+              <span
+                ><i class="status-dot"></i>
+                <span id="result-status">LIVE SCENARIO</span></span
+              ><span id="result-model">CONSTANT LOAD</span>
+            </div>
+            <div id="power-results">
+              <p class="result-label">Annual energy cost</p>
+              <div class="primary-result">
+                <span id="annual-cost">—</span
+                ><span id="result-currency">USD / YR</span>
+              </div>
+              <p class="result-caption" id="energy-caption">
+                Change an assumption to explore the result.
+              </p>
+              <div class="metrics">
+                <div>
+                  <span>Facility demand</span><strong id="facility">—</strong>
+                </div>
+                <div>
+                  <span>Annual energy</span><strong id="energy">—</strong>
+                </div>
+              </div>
+              <div class="chart-heading">
+                <span>WHERE THE POWER GOES</span
+                ><span id="pue-badge">PUE 1.20</span>
+              </div>
+              <div class="power-bar" role="img" id="power-bar">
+                <div id="it-bar"></div>
+                <div id="overhead-bar"></div>
+              </div>
+              <div class="chart-legend">
+                <span
+                  ><i class="key it"></i> IT equipment
+                  <b id="it-label">—</b></span
+                ><span
+                  ><i class="key overhead"></i> Facility overhead
+                  <b id="overhead-label">—</b></span
+                >
+              </div>
+              <div class="comparison-note" id="comparison-note">
+                <span class="comparison-icon" aria-hidden="true">↘</span>
+                <div>
+                  <strong id="saved-cost">—</strong>
+                  <p id="saved-caption">Compared with your reference PUE.</p>
+                </div>
+              </div>
+              <p class="result-boundary">
+                Overhead includes cooling and electrical losses. PUE is an input
+                here, not a prediction of equipment performance.
+              </p>
+            </div>
+            <div id="cooling-results" hidden>
+              <p class="result-label">Required loop flow</p>
+              <div class="primary-result">
+                <span id="loop-flow">—</span><span>L / SEC</span>
+              </div>
+              <p class="result-caption" id="flow-caption"></p>
+              <div class="metrics">
+                <div>
+                  <span>Heat captured</span
+                  ><strong id="heat-captured">—</strong>
+                </div>
+                <div>
+                  <span>Pump input estimate</span
+                  ><strong id="pump-power">—</strong>
+                </div>
+              </div>
+              <div class="thermal-diagram" role="img" id="thermal-diagram">
+                <span class="loop-node"
+                  >IT heat<br /><b id="loop-heat">—</b></span
+                >
+                <div class="loop-pipes">
+                  <span class="warm-pipe">WARM RETURN →</span
+                  ><span class="cool-pipe">← COOL SUPPLY</span>
+                </div>
+                <span class="loop-node">Heat<br />exchanger</span>
+              </div>
+              <div class="comparison-note">
+                <span class="comparison-icon" aria-hidden="true">≈</span>
+                <div>
+                  <strong id="residual-heat">—</strong>
+                  <p>IT heat remaining outside this liquid loop.</p>
+                </div>
+              </div>
+              <p class="result-boundary">
+                This balances sensible heat only. Heat-exchanger capacity,
+                equipment temperatures, phase change and pump heat feedback are
+                not modelled. Pump input is not added again to PUE.
+              </p>
+            </div>
+            <div
+              id="validation-summary"
+              class="validation-summary"
+              role="status"
+              hidden
+            ></div>
+            <div class="result-actions">
+              <button class="button light" id="save-scenario">
+                Save comparison <span aria-hidden="true">+</span></button
+              ><button
+                class="icon-button"
+                id="share"
+                aria-label="Copy shareable scenario link"
+                title="Copy scenario link"
+              >
+                ↗</button
+              ><button
+                class="icon-button"
+                id="download"
+                aria-label="Download scenario as JSON"
+                title="Download JSON"
+              >
+                ↓
+              </button>
+            </div>
+            <div class="secondary-actions">
+              <button id="download-csv">Export CSV</button
+              ><a href="#methodology">See the equations ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="scenario-tray">
+          <div class="tray-heading">
+            <div>
+              <h3>Keep a little perspective.</h3>
+              <p>Save up to three scenarios and compare them side by side.</p>
+            </div>
+            <button class="text-button" id="clear-scenarios" hidden>
+              Clear saved
+            </button>
+          </div>
+          <div id="scenario-list" class="scenario-list">
+            <div class="empty-scenarios">
+              <span aria-hidden="true">⊞</span>
+              <p>
+                Your comparisons live here.<br /><span
+                  >Saved only in this browser.</span
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        class="field-notes wrap"
+        id="field-notes"
+        aria-labelledby="notes-title"
+      >
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">02 / FIELD NOTES</span>
+            <h2 id="notes-title">
+              A little context.<br /><em>A better question.</em>
+            </h2>
+          </div>
+          <p>
+            Three ideas worth keeping in mind<br />before turning a number into
+            a decision.
+          </p>
+        </div>
+        <div class="notes-grid">
+          <article>
+            <span class="note-index">NOTE / 001</span>
+            <div class="note-art efficiency-art" aria-hidden="true">
+              <div></div>
+              <div></div>
+              <div></div>
+              <span>1.0 → 1.4</span>
+            </div>
+            <h3>PUE is a ratio.<br />Not the whole story.</h3>
+            <p>
+              A lower PUE reduces overhead for the same IT energy. It doesn’t
+              tell you how useful the computation is, or how the electricity was
+              generated.
+            </p>
+            <button class="note-link" data-example="efficiency">
+              Explore an efficiency change <span>↗</span>
+            </button>
+          </article>
+          <article>
+            <span class="note-index">NOTE / 002</span>
+            <div class="note-art heat-art" aria-hidden="true">
+              <div></div>
+              <div></div>
+              <div></div>
+              <span>Q = ṁ cₚ ΔT</span>
+            </div>
+            <h3>Warmer return.<br />Less circulating flow.</h3>
+            <p>
+              For the same heat and fluid, doubling the temperature rise halves
+              the required flow. Equipment limits still decide which
+              temperatures are possible.
+            </p>
+            <button class="note-link" data-example="thermal">
+              Try the temperature tradeoff <span>↗</span>
+            </button>
+          </article>
+          <article>
+            <span class="note-index">NOTE / 003</span>
+            <div class="note-art time-art" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span
+              ><span></span><span></span><span></span><span></span><span></span
+              ><b>MW × HOURS = MWh</b>
+            </div>
+            <h3>Power is a rate.<br />Energy is the total.</h3>
+            <p>
+              One megawatt running for one hour uses one megawatt-hour. Your
+              bill follows energy, the tariff and other charges—not nameplate
+              capacity alone.
+            </p>
+            <button class="note-link" data-example="energy">
+              Start with a one-megawatt case <span>↗</span>
+            </button>
+          </article>
+        </div>
+      </section>
+      <section
+        class="methodology wrap"
+        id="methodology"
+        aria-labelledby="method-title"
+      >
+        <div class="method-intro">
+          <span class="eyebrow">03 / UNDER THE SURFACE</span>
+          <h2 id="method-title">
+            Trust starts with<br /><em>showing the work.</em>
+          </h2>
+          <p>
+            FATHOM is a screening workbench. Every result comes from visible
+            inputs and a small, inspectable model.
+          </p>
+          <a
+            class="text-link"
+            href="https://github.com/paulchum/fathom/blob/main/docs/METHODOLOGY.md"
+            target="_blank"
+            rel="noopener"
+            >Read the full methodology ↗</a
+          >
+        </div>
+        <div class="method-details">
+          <details open>
+            <summary><span>01</span> Power &amp; energy <i>+</i></summary>
+            <div>
+              <code
+                >Facility power = IT power × PUE<br />Annual energy = facility
+                power × hours<br />Energy cost = MWh × 1,000 × price/kWh</code
+              >
+              <p>
+                Use average IT load and a consistent, energy-weighted PUE across
+                the selected hours. The comparison holds IT load, hours and
+                price fixed. Currency changes the label, not the exchange rate.
+              </p>
+              <a
+                href="https://www.energy.gov/sites/default/files/2024-07/best-practice-guide-data-center-design.pdf"
+                target="_blank"
+                rel="noopener"
+                >Source: US Department of Energy ↗</a
+              >
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span>02</span> Cooling &amp; circulation <i>+</i>
+            </summary>
+            <div>
+              <code
+                >Heat = IT power × liquid capture fraction<br />Mass flow = heat
+                / (specific heat × ΔT)<br />Pump input = pressure drop × volume
+                flow / efficiency</code
+              >
+              <p>
+                Assumes a single-phase fluid and constant properties. The water
+                defaults (4.18 kJ/kg·K and 1,000 kg/m³) are screening
+                approximations. Specify your actual properties. Flow represents
+                circulation, not water consumption. Facility overhead and pump
+                heat feedback are excluded from the heat load.
+              </p>
+              <a
+                href="https://www.energy.gov/documents/doe-hdbk-1012-92vol1"
+                target="_blank"
+                rel="noopener"
+                >Source: DOE heat-transfer handbook ↗</a
+              ><br /><a
+                href="https://webbook.nist.gov/chemistry/fluid/"
+                target="_blank"
+                rel="noopener"
+                >Fluid-property reference: NIST ↗</a
+              >
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span>03</span> Your scenarios &amp; privacy <i>+</i>
+            </summary>
+            <div>
+              <p>
+                Calculations run in your browser. Saved comparisons stay in this
+                browser’s local storage; clear them any time. Share links
+                contain your input values in the URL fragment. Anyone with the
+                link can read them. The app has no analytics, account system or
+                application backend. The hosting provider may retain ordinary
+                access logs.
+              </p>
+              <p>
+                JSON exports include inputs, results, units, assumptions and
+                sources. CSV exports include inputs and results for
+                spreadsheets.
+              </p>
+            </div>
+          </details>
+          <details>
+            <summary><span>04</span> Scope &amp; source code <i>+</i></summary>
+            <div>
+              <p>
+                This is a new public workbench informed by FATHOM’s earlier
+                infrastructure modelling. It estimates energy and flow; it does
+                not certify designs, site feasibility, water availability or
+                equipment performance.
+              </p>
+              <p>
+                The source is public on GitHub. No project licence has been
+                granted at this time.
+              </p>
+              <a
+                href="https://github.com/paulchum/fathom"
+                target="_blank"
+                rel="noopener"
+                >Inspect the source ↗</a
+              >
+            </div>
+          </details>
+        </div>
+      </section>
+      <section class="closing wrap">
+        <span class="eyebrow">SMALL TOOLS. BETTER DECISIONS.</span>
+        <h2>Go beneath <em>the headline.</em></h2>
+        <p>
+          Inspect a formula. Question an assumption. Make the next conversation
+          more useful.
+        </p>
+        <a
+          class="button dark"
+          href="https://github.com/paulchum/fathom"
+          target="_blank"
+          rel="noopener"
+          >Explore FATHOM on GitHub <span aria-hidden="true">↗</span></a
+        >
+      </section>
+    </main>
+    <footer class="site-footer wrap">
+      <a class="wordmark" href="./">fathom<span class="wordmark-dot">.</span></a
+      ><span>Power. Cooling. Perspective.</span><span>v0.1 · Model 1.0</span
+      ><a
+        href="https://github.com/paulchum/fathom/issues"
+        target="_blank"
+        rel="noopener"
+        >Report an issue ↗</a
+      >
+    </footer>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <dialog id="share-dialog">
+      <form method="dialog">
+        <div class="panel-heading">
+          <h3>Your scenario link</h3>
+          <button class="text-button" aria-label="Close share dialog">
+            Close ×
+          </button>
+        </div>
+        <p>Copy this link to share the current inputs.</p>
+        <input id="share-url" type="text" readonly aria-label="Scenario URL" />
+        <p class="small muted">
+          Anyone with the link can read the input values.
+        </p>
+      </form>
+    </dialog>
+    <noscript
+      ><div class="noscript">
+        Enable JavaScript to use the calculators. The equations and methodology
+        below remain available.
+      </div></noscript
+    >
+  </body>
+</html>

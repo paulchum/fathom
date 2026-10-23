@@ -1,0 +1,22 @@
+name: Report a problem
+description: A numerical result, unclear assumption or interface problem
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include the exact inputs, steps and observed result. Use non-confidential example values.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+      description: For a numerical issue, include an independent calculation or primary reference and its units.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser, device and version
+      placeholder: e.g. Safari on iPhone, FATHOM v0.1 / model 1.0
